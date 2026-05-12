@@ -1,0 +1,40 @@
+<%- include("templates/header", { title, user }) %>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4 p-md-5">
+                <% if (!user) { %>
+                    <div class="text-center">
+                        <h1 class="display-5 fw-bold mb-3">Welcome</h1>
+                        <p class="lead text-muted mb-4">
+                            Sign up for a new account or log in to access the members area.
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="/signup" class="btn btn-warning btn-lg rounded-pill px-4">Sign Up</a>
+                            <a href="/login" class="btn btn-outline-dark btn-lg rounded-pill px-4">Log In</a>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="text-center">
+                        <h1 class="display-6 fw-bold mb-3">Hello, <%= user.name %></h1>
+                        <p class="lead text-muted mb-4">
+                            You are logged in and ready to enter the members area.
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="/members" class="btn btn-warning btn-lg rounded-pill px-4">Go to Members Area</a>
+
+                            <% if (user.user_type === "admin") { %>
+                                <a href="/admin" class="btn btn-outline-dark btn-lg rounded-pill px-4">Admin Page</a>
+                            <% } %>
+
+                            <a href="/logout" class="btn btn-danger btn-lg rounded-pill px-4">Log Out</a>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("templates/footer") %>

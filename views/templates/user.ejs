@@ -1,0 +1,18 @@
+<div class="list-group-item px-0 py-3 border-bottom">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+        <div>
+            <div class="fw-semibold"><%= user.name %></div>
+            <div class="text-muted small"><%= user.email %></div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+            <% if (user.user_type === "admin") { %>
+                <span class="badge text-bg-warning">admin</span>
+                <a href="/admin/demote?email=<%= user.email %>" class="btn btn-sm btn-outline-danger rounded-pill">Demote</a>
+            <% } else { %>
+                <span class="badge text-bg-secondary">user</span>
+                <a href="/admin/promote?email=<%= user.email %>" class="btn btn-sm btn-outline-dark rounded-pill">Promote</a>
+            <% } %>
+        </div>
+    </div>
+</div>
